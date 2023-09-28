@@ -7,7 +7,7 @@ describe('Test E2E', () => {
         cy.get('h1')
             .should('have.text', 'todos');
 
-            cy.get('input[type="text"]')
+        cy.get('input[type="text"]')
             .should('have.value', '');  
 
         cy.get('button[type="submit"]')
@@ -25,7 +25,7 @@ describe('Test E2E', () => {
         cy.get('input[type="text"]')
             .type('abc')
             .should('have.value', 'abc')
-            cy.contains('Submit')
+        cy.contains('Submit')
             .should('be.visible')
             .click();
         cy.get('li[class="TodoItem_item__iFWQW"]').should('have.text', 'Delete333Deleteabc');
@@ -34,7 +34,7 @@ describe('Test E2E', () => {
         cy.get('input[type="text"]')
             .type('@123!')
             .should('have.value', '@123!')
-            cy.contains('Submit')
+        cy.contains('Submit')
             .should('be.visible')
             .click();
         cy.get('li[class="TodoItem_item__iFWQW"]').should('have.text', 'Delete333DeleteabcDelete@123!');
