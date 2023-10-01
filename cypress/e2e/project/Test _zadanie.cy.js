@@ -1,8 +1,11 @@
 describe('Test E2E', () => {
 
     it('to do list', () => {
+        cy.viewport(1280, 720);
+
         cy.visit('https://forhemer.github.io/React-Todo-List/');
-        cy.viewport(1000, 660);
+        
+        
 
         cy.get('h1')
             .should('have.text', 'todos');
@@ -40,11 +43,20 @@ describe('Test E2E', () => {
         cy.get('li[class="TodoItem_item__iFWQW"]').should('have.text', 'Delete333DeleteabcDelete@123!');
         cy.get('input[type="text"]').should('have.value', '');
 
-        cy.get(':nth-child(1) > .TodoItem_checkbox__Tf0FQ').should('not.have.checked').click().should('have.checked');
-        
         cy.get(':nth-child(1) > .TodoItem_checkbox__Tf0FQ')
-            .click()
+            .should('not.have.checked')
+            .check()
+            .should('have.checked');
+        
+        cy.get(':nth-child(1) > span')
+            .should('have.css', 'text-decoration', 'line-through solid rgb(89, 89, 89)');
+
+        cy.get(':nth-child(1) > .TodoItem_checkbox__Tf0FQ')
+            .uncheck()
             .should('not.have.checked');
+        cy.get(':nth-child(1) > span')
+            .should('not.have.css', 'text-decoration', 'line-through solid rgb(89, 89, 89)')
+        
 
         cy.get(':nth-child(1) > button')
             .should('be.visible')
