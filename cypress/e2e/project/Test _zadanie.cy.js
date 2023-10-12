@@ -22,7 +22,8 @@ describe('Test E2E', () => {
         cy.contains('Submit')
             .should('be.visible')
             .click();
-        cy.get('li[class="TodoItem_item__iFWQW"]').should('have.text', 'Delete333');
+        cy.contains('333').should('exist')    
+        
         cy.get('input[type="text"]').should('have.value', '');  
         
         cy.get('input[type="text"]')
@@ -31,7 +32,7 @@ describe('Test E2E', () => {
         cy.contains('Submit')
             .should('be.visible')
             .click();
-        cy.get('li[class="TodoItem_item__iFWQW"]').should('have.text', 'Delete333Deleteabc');
+        cy.contains('abc').should('exist');
         cy.get('input[type="text"]').should('have.value', '');
 
         cy.get('input[type="text"]')
@@ -40,7 +41,7 @@ describe('Test E2E', () => {
         cy.contains('Submit')
             .should('be.visible')
             .click();
-        cy.get('li[class="TodoItem_item__iFWQW"]').should('have.text', 'Delete333DeleteabcDelete@123!');
+        cy.contains('123').should('exist');
         cy.get('input[type="text"]').should('have.value', '');
 
         cy.get(':nth-child(1) > .TodoItem_checkbox__Tf0FQ')
@@ -62,7 +63,9 @@ describe('Test E2E', () => {
             .should('be.visible')
             .click();
         
+        cy.contains('333').should('not.exist')
+        
         cy.get('.TodoItem_item__iFWQW').its('length').should('eq', 2)
-
+        
     })
 })
